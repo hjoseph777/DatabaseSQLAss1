@@ -1,5 +1,7 @@
 # My SQL Assignment 1
 
+[← Return to Main Page](../index.html)
+
 In this SQL assignment, you will use SQL Developer to perform various database operations based on provided tables. The task involves writing SQL queries to extract specific information and displaying the results immediately after each command. You are required to include comments in your SQL scripts to record your name, assignment number, and question number for clarity. The assignment consists of 10 questions, each focusing on different SQL operations such as filtering, sorting, and pattern matching. 
 
 ## Project Structure
