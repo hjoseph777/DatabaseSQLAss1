@@ -1,0 +1,276 @@
+/* CSS Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #35424a;
+    --secondary-color: #808080;
+    --background-color: #f4f4f4;
+    --main-background: #d3d3d3;
+    --text-color: #ffffff;
+    --hover-color: #4a5c66;
+    --transition-speed: 0.3s;
+    --spacing-unit: 20px;
+    --border-radius: 5px;
+    --hint-text-opacity: 0.9;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: var(--background-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    padding: var(--spacing-unit) 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+}
+
+main {
+    background-color: var(--main-background);
+    color: var(--text-color);
+    padding: var(--spacing-unit);
+    flex: 1;
+}
+
+h2.sql-lab {
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    padding: var(--spacing-unit);
+    text-align: center;
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-unit);
+    font-size: 1.75rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hint-text {
+    color: #000000; /* Change from var(--text-color) to black */
+    text-align: center;
+    margin: calc(var(--spacing-unit) / 2) 0 var(--spacing-unit);
+    font-size: 1rem;
+    font-style: italic;
+    opacity: var(--hint-text-opacity);
+    font-weight: 500; /* Added for better visibility on light background */
+}
+
+/* Button Layout */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-unit);
+    margin-top: var(--spacing-unit);
+    width: 100%;
+    position: relative;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-unit);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Button Styling */
+button {
+    min-width: 150px;
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-speed) ease-in-out;
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    background-color: var(--hover-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateZ(0); /* Add hardware acceleration */
+    -webkit-transform: translateZ(0);
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button:focus {
+    outline: 2px solid var(--hover-color);
+    outline-offset: 2px;
+}
+
+/* Image Display */
+.image-display {
+    display: none;
+    position: absolute;
+    width: 80%;
+    max-width: 800px;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 20px;
+}
+
+.image-display.visible {
+    display: block;
+}
+
+.image-display img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border: 2px solid var(--text-color);
+    border-radius: var(--border-radius);
+}
+
+/* Fullscreen Image View */
+.fullscreen-view {
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.fullscreen-view.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.fullscreen-view img {
+    max-width: 90%;
+    max-height: 90vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--text-color);
+    border-radius: var(--border-radius);
+}
+
+.return-button {
+    position: fixed;
+    top: 20px;
+    left: -200px; /* Start off-screen */
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    z-index: 2001;
+    transition: left 0.3s ease-in-out;
+}
+
+.return-button.visible {
+    left: 20px;
+}
+
+.return-button:hover {
+    background-color: var(--hover-color);
+    transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    :root {
+        --spacing-unit: 15px;
+    }
+
+    button {
+        min-width: 130px;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    h2.sql-lab {
+        font-size: 1.5rem;
+    }
+
+    .container {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    button {
+        min-width: 100%;
+        margin: 0;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+}
+
+/* Loading State */
+.button-loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.button-loading::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top-color: var(--text-color);
+    border-radius: 50%;
+    animation: button-loading-spinner 0.8s ease infinite;
+}
+
+@keyframes button-loading-spinner {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
